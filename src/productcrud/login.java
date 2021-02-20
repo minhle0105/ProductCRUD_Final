@@ -3,6 +3,8 @@ package productcrud;
 import javax.swing.*;
 
 public class login extends javax.swing.JFrame {
+      static Password p = new Password();
+
       /**
        * Creates new form NewJFrame
        */
@@ -70,13 +72,13 @@ public class login extends javax.swing.JFrame {
       private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {
             String userName = userNameText.getText();
             String userPassword = passwordText.getText();
-
-            if (userName.equals("admin") && userPassword.equals("Saigon@2018")) {
-                  JOptionPane.showMessageDialog(this, "Successfully Log In");
-                  product newProductForm = new product();
-                  newProductForm.setVisible(true);
-                  System.out.println("Logging in");
-                  this.setVisible(false);
+            if (userName.equals("admin")) {
+                  if (p.validatePassword(userPassword)) {
+                        JOptionPane.showMessageDialog(this, "Successfully Log In");
+                        product newProductForm = new product();
+                        newProductForm.setVisible(true);
+                        this.setVisible(false);
+                  }
             } else {
                   JOptionPane.showMessageDialog(this, "Invalid UserName or Password");
             }
